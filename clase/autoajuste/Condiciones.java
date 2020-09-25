@@ -1,11 +1,17 @@
-package clase.autoajuste;
+package clase;
 
 public class Condiciones {
-    private int camuflaje;
-    private int distancia;
+	private float camuflaje;
+    private int distancia = 80;
     private int hora;
+    public boolean finished = false;
+    
+    public boolean isFinished() {
+		return finished;
+	}
 
-    public Condiciones(int horaInicial) {
+
+	public Condiciones(int horaInicial) {
         actualizaCondiciones(horaInicial);
     }
 
@@ -19,34 +25,47 @@ public class Condiciones {
 
         return resultado.intValue();
     }
+    public float generaNumAleatorioF(int limInf, int limSup) {
+        double valor;
+        Double resultado;
+
+        valor = Math.floor(Math.random() * (limSup - limInf + 1)) + limInf;
+
+        resultado = new Double(valor);
+
+        return resultado.floatValue();
+    }
+    
 
     public void actualizaCondiciones(int hora) {
         int aleatorio;
 
         this.hora = hora;
+        //TODO arreglar esta cagada
 
-        if (hora <= 2 || hora > 24) // 0-2, 25-34
-            camuflaje = 99;
+        if (hora <= 2) // 0-2, 25-34
+            camuflaje *= 1.2;
         else if (hora > 2 && hora < 7 || hora > 20 && hora <= 24) // 3-6, 21-24
-            camuflaje = 80;
+            camuflaje *= 1.1;
         else if (hora >= 7 && hora < 11 || hora >= 18 && hora < 21) // 7-10, 18-20
-            camuflaje = 60;
+            camuflaje *=  0.95;
         else // 11-17
-            camuflaje = 30;
+            camuflaje *=  0.89;
         aleatorio = generaNumAleatorio(0, 1);
         if (aleatorio == 1) {
             if (distancia < 144) {
-                distancia += 5;
+                distancia += 7;
             }
         } else {
             if (distancia > 5) {
-                distancia -= 5;
+                distancia -= 7;
             }
         }
+        finished = true;
 
     }
 
-    public int getCamuflaje() {
+    public float getCamuflaje() {
         return camuflaje;
     }
 
@@ -57,5 +76,4 @@ public class Condiciones {
     public int getDistancia() {
         return distancia;
     }
-
 }

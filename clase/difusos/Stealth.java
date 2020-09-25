@@ -83,7 +83,7 @@ public class Stealth {
 
     Estado.addTerm(new Trapezoid("ALERTA", 35, 45, 50, 60));
     Estado.addTerm(new Trapezoid("ENCONTRADO", 55, 65, 75, 85));
-    
+
     Trapezoid funcionEstadoCombate = new Trapezoid("COMBATE");
     funcionEstadoCombate.setVertexA(80);
     funcionEstadoCombate.setVertexB(100);
@@ -112,19 +112,19 @@ public class Stealth {
     // Uso del sistema
     engine.setInputValue("Distancia", 148);
     engine.process();
-    engine.setInputValue("Camuflaje",99);
+    engine.setInputValue("Camuflaje", 99);
     engine.process();
     double estado = engine.getOutputValue("Estado");
-    
+
     System.out.println("El valor de salida es " + String.valueOf(estado));
 
-    if (estado <= 35){
+    if (estado <= 35) {
       System.out.println("Estado es Patrullaje ");
-    }else if (estado > 35 && estado <= 60){
+    } else if (estado > 35 && estado <= 60) {
       System.out.println("Estado es Alerta ");
-    }else if(estado > 60 && estado <= 85  ){
-      System.out.println("Estado es Encontrado ");     
-    }else if(estado > 85){
+    } else if (estado > 60 && estado <= 85) {
+      System.out.println("Estado es Encontrado ");
+    } else if (estado > 85) {
       System.out.println("Estado es Combate ");
     }
 

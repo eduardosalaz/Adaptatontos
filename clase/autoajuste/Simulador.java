@@ -1,7 +1,7 @@
-import clase.autoajuste.*;
+package clase;
 
 public class Simulador {
-    public int camuflaje;
+	public int camuflaje;
     public int distancia;
 
     public static void main(String args[]) {
@@ -16,4 +16,5 @@ public class Simulador {
         accion.start();
 
     }
+
 }
