@@ -1,7 +1,7 @@
 package clase;
 
 public class Condiciones {
-	private float camuflaje;
+	private float camuflaje = 70;
     private int distancia = 80;
     private int hora;
     public boolean finished = false;
@@ -39,18 +39,26 @@ public class Condiciones {
 
     public void actualizaCondiciones(int hora) {
         int aleatorio;
+        int aleatorio2;
 
         this.hora = hora;
+        
         //TODO arreglar esta cagada
 
-        if (hora <= 2) // 0-2, 25-34
-            camuflaje *= 1.2;
-        else if (hora > 2 && hora < 7 || hora > 20 && hora <= 24) // 3-6, 21-24
-            camuflaje *= 1.1;
-        else if (hora >= 7 && hora < 11 || hora >= 18 && hora < 21) // 7-10, 18-20
-            camuflaje *=  0.95;
-        else // 11-17
-            camuflaje *=  0.89;
+        //if (hora <= 2) // 0-2, 25-34
+        
+          //  camuflaje = 95
+        	
+       // else if (hora > 2 && hora < 7 || hora > 20 && hora <= 24) // 3-6, 21-24
+            //camuflaje = camuflaje + 10;
+        //else if (hora >= 7 && hora < 11 || hora >= 18 && hora < 21) // 7-10, 18-20
+            //camuflaje = camuflaje - 10;
+        //else // 11-17
+            //camuflaje = camuflaje - 5;
+        
+        aleatorio2 = generaNumAleatorio(20,95);
+        camuflaje = aleatorio2;
+        
         aleatorio = generaNumAleatorio(0, 1);
         if (aleatorio == 1) {
             if (distancia < 144) {
